@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Usuario</title>
+</head>
+<body>
+    <table>
+
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Senha</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="usuarios: ${usuario}">
+                <td th:text="${usuarios.nome}"></td>
+                <td th:text="${usuarios.email}"></td>
+                <td th:text="${usuarios.senha}"></td>
+                <td th:text="${usuarios.tipoUsuario.nome}"></td>
+                <td><a th:href="@{'/usuario/getById?id=' + ${usuarios.id_usuario}}">Editar</a></td>
+                <td><a th:href="@{'/usuario/delete?id=' + ${usuarios.id_usuario}}">Excluir</a></td>
+            </tr>
+        </tbody>
+        <a href="/usuario/add">Inserir</a>
+        <a href="/home">Menu</a>
+    </table>
+</body>
+</html>

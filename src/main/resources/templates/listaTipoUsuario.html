@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Tipo Usuario</title>
+</head>
+<body>
+    <table>
+
+        <thead>
+            <tr>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="usuarios: ${tipoUsuario}">
+                <td th:text="${usuarios.nome}"></td>
+                <td><a th:href="@{'/tipoUsuario/getById?id=' + ${usuarios.id_tipoUsuario}}">Editar</a></td>
+                <td><a th:href="@{'/tipoUsuario/delete?id=' + ${usuarios.id_tipoUsuario}}">Excluir</a></td>
+            </tr>
+        </tbody>
+        <a href="/tipoUsuario/add">Inserir</a>
+        <a href="/home">Menu</a>
+    </table>
+</body>
+</html>

@@ -1,0 +1,37 @@
+package mvc.loja.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import mvc.loja.dao.PedidoDao;
+import mvc.loja.dto.Pedido;
+
+@Service
+public class PedidoService {
+    
+    @Autowired
+    private PedidoDao cliDao;
+
+    public List<Pedido> getAll(){
+        return cliDao.getAll();
+    }
+    
+    public Pedido getById(Long id){
+        return cliDao.getById(id);
+    }
+
+    public boolean insert(Pedido pedidos){
+        pedidos.setId_pedido(cliDao.getNextId());
+        return cliDao.insert(pedidos);
+    }
+
+    public boolean update(Pedido pedidos){
+        return cliDao.update(pedidos);
+    }
+
+    public boolean delete(Long id){
+        return cliDao.delete(id);
+    }
+}

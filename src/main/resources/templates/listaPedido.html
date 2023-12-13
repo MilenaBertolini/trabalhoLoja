@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Pedido</title>
+</head>
+<body>
+    <table>
+
+        <thead>
+            <tr>
+                <th>Código do pedido</th>
+                <th>Cliente</th>
+                <th>Data</th>
+                <th>Valor Total</th>
+                <th>Observacao</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pedido: ${pedido}">
+                <td th:text="${pedido.id_pedido}"></td>
+                <td th:text="${pedido.Cliente.nome}"></td>
+                <td th:text="${pedido.data_pedido}"></td>
+                <td th:text="${pedido.valor_pedido}"></td>
+                <td th:text="${pedido.observacao_pedido}"></td>
+                <td><a th:href="@{'/pedido/getById?id=' + ${pedido.id_pedido}}">Visualizar</a></td>
+            </tr>
+        </tbody>
+        <a href="/home">Menu</a>
+    </table>
+</body>
+</html>

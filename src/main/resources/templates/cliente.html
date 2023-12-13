@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualiza Cliente</title>
+</head>
+<body>
+    <h2 class="title">Formulário de Registro</h2>
+    <div th:if="${editando} == true">
+        <form method="POST" action="/cliente/update">
+    
+            <input type="hidden"  name="id_cliente" th:value="${cliente.id_cliente}">
+            <label class="label">Nome</label>
+            <input type="text" name="nome" th:value="${cliente.nome}">
+            <label class="label">Email</label>
+            <input type="text" name="email" th:value="${cliente.email}">
+            <label class="label">Endereço</label>
+            <input type="text" name="endereco" th:value="${cliente.endereco}">
+            <label class="label">Telefone</label>
+            <input type="text" name="telefone" th:value="${cliente.telefone}">
+            <label class="label">Observaçao</label>
+            <input type="text" name="obervacao_cliente" th:value="${cliente.obervacao_cliente}">
+    
+            <button type="submit">Atualizar</button>
+        </form>
+    </div>
+    <div th:if="${editando} == false">
+        <form method="POST" action="/cliente/insert">
+    
+            <label class="label">Nome</label>
+            <input type="text" name="nome">
+            <label class="label">Email</label>
+            <input type="text" name="email">
+            <label class="label">Endereço</label>
+            <input type="text" name="endereco">
+            <label class="label">Telefone</label>
+            <input type="text" name="telefone">
+            <label class="label">Observaçao</label>
+            <input type="text" name="obervacao_cliente">
+    
+            <button type="submit">Inserir</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualiza Categoria</title>
+</head>
+<body>
+    <h2 class="title">Formulário de Registro</h2>
+    <div th:if="${editando} == true">
+        <form method="POST" action="/categoria/update">
+    
+            <input type="hidden"  name="id_categoria" th:value="${categoria.id_categoria}">
+            <label class="label">Nome</label>
+            <input type="text" name="nome" th:value="${categoria.nome}">
+    
+            <button type="submit">Atualizar</button>
+        </form>
+    </div>
+    <div th:if="${editando} == false">
+        <form method="POST" action="/categoria/insert">
+    
+            <label class="label">Nome</label>
+            <input type="text" name="nome">
+    
+            <button type="submit">Inserir</button>
+        </form>
+    </div>
+</body>
+</html>
