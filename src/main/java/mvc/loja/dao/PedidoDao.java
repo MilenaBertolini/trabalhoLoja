@@ -35,6 +35,19 @@ public class PedidoDao {
         }
     }
 
+    public Pedido getLast(){
+
+        String query = "select * from pedido order by id_pedido desc";
+
+        List<Pedido> pedidos = bd.query(query, new BeanPropertyRowMapper<>(Pedido.class));
+
+        if(pedidos != null && pedidos.size() > 0){
+            return pedidos.get(0);
+        }else{
+            return null;
+        }
+    }
+
     // adiciona o id em cada inserção
     public long getNextId(){
 
@@ -56,13 +69,13 @@ public class PedidoDao {
 
         try {
 
-            String query = "insert into pedido(id_pedido, id_cliente, valor_pedido, data_pedido, observacao_pedido) values (?, ?, ?, ?)";
+            String query = "insert into pedido(id_pedido, id_cliente, valor_pedido, data_pedido, observacao_pedido) values (?, ?, ?, ?, ?)";
 
             bd.update(query, new Object[]{
                 pedido.getId_pedido(),
                 pedido.getId_cliente(),
-                pedido.getData_pedido(),
                 pedido.getValor_pedido(),
+                pedido.getData_pedido(),
                 pedido.getObservacao_pedido(),
             });
 
@@ -78,12 +91,13 @@ public class PedidoDao {
 
         try {
             
-            String query = "update pedido set id_cliente = ?, data_pedido = ?, observacao_pedido = ? where id_pedido = ?";
+            String query = "update pedido set id_cliente = ?, data_pedido = ?, observacao_pedido = ?, valor_pedido = ? where id_pedido = ?";
 
             bd.update(query, new Object[]{
                 pedido.getId_cliente(),
                 pedido.getData_pedido(),
                 pedido.getObservacao_pedido(),
+                pedido.getValor_pedido(),
                 pedido.getId_pedido()
             });
 

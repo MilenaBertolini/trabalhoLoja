@@ -5,8 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Criar pedido</title>
+    <script th:inline="javascript">
+        var list = /*[[${produto}]]*/ [];
+    </script>
 </head>
 <body>
-    
+    <a id="home" href="/home">Menu</a>
+    <h2>Selecione o cliente:</h2>
+    <a href="/cliente/add">Adicione o cliente</a>
+    <select id="id_cliente" name="id_cliente">
+        <option th:each="i : ${cliente}" th:value="${i.id_cliente}" th:text="${i.nome}">
+        </option>
+    </select>
+    <h2>Selecione o item:</h2>
+    <table>
+
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço de Venda</th>
+                <th>Quantidade</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="produto: ${produto}">
+                <td th:text="${produto.nome}"></td>
+                <td th:text="${produto.descricao}"></td>
+                <td th:text="${produto.preco_venda}"></td>
+                <td th:text="${produto.quantidade}"></td>
+                <td th:text="${produto.Categoria.nome}"></td>
+                <td><input type="number" th:id="'txt_' + ${produto.id_produto}"/></td>
+                <td><button th:id="'addButton' + ${produto.id_produto}" th:onclick="'addItem(' + ${produto.id_produto} + ')'">Add</button></td>
+                <td><button disabled th:id="'delButton' + ${produto.id_produto}"th:onclick="'deleteItem(' + ${produto.id_produto} + ')'">Remove</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="valorTotal">
+
+    </div>
+    <button onclick="FinalizaPedido()">Fechar pedido</button>
 </body>
 </html>
+
+<script>
+
+    var itens = [];
+    var valor = 0;
+    function addItem(id){
+        var quantidade = document.getElementById('txt_' + id).value;
+        
+        if(quantidade > 0){
+            document.getElementById('addButton' + id).disabled = true;
+            document.getElementById('delButton' + id).disabled = false;
+            document.getElementById('txt_' + id).disabled = true;
+            
+            itens.push({item: id, quantidade: quantidade});
+
+            valor += list.filter(p => p.id_produto == id)[0].preco_venda * quantidade;
+
+            document.getElementById('valorTotal').innerHTML = '<h3><b>Valor total: ' + valor + '</b></h3>'
+        }
+        else{
+            alert('Preencha a quantidade');
+        }
+    }
+
+    function deleteItem(id){
+        var index = itens.findIndex(i => i.cliente == id);
+        if (index) {
+            itens.slice(index, 1);
+            var quantidade = document.getElementById('txt_' + id).value;
+            document.getElementById('addButton' + id).disabled = false;
+            document.getElementById('delButton' + id).disabled = true;
+            document.getElementById('txt_' + id).disabled = false;
+            document.getElementById('txt_' + id).value = 0;
+
+            valor -= list.filter(p => p.id_produto == id)[0].preco_venda * quantidade;
+            document.getElementById('valorTotal').innerHTML = '<h3><b>Valor total: ' + valor + '</b></h3>'
+        }
+    }
+
+    function FinalizaPedido(){
+        if(itens.length == 0){
+            alert('Não há itens selecionados');
+            return;
+        }
+        
+        cliente = document.getElementById('id_cliente').value;
+        pedido = {
+            cliente: cliente,
+            itens: itens,
+        }
+
+        fetch('/pedido/insert', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Add any other headers as needed
+                },
+                body: JSON.stringify(pedido),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                alert('Pedido feito!');
+                document.getElementById('home').click();
+            })
+            .then(data => {
+                // Process the data from the API
+                console.log(data);
+            })
+    }
+</script>

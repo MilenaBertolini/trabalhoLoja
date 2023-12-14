@@ -36,7 +36,7 @@ public class ItemPedidoService {
     public ItemPedido getById(Long id){
         ItemPedido item = cliDao.getById(id);
 
-        item.setProduto(produtoService.getById(item.getId_produto());
+        item.setProduto(produtoService.getById(item.getId_produto()));
 
         return item;
     }

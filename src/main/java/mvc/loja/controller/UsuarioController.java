@@ -35,6 +35,7 @@ public class UsuarioController {
 
         if(usuarioService.validaLogin(login.getEmail(), login.getSenha())){
             model.addAttribute("usuario", usuarioService.getByEmail(login.getEmail()));
+            
             return home();
         }else{
             return "loginErro";

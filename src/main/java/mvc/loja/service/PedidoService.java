@@ -22,9 +22,16 @@ public class PedidoService {
         return cliDao.getById(id);
     }
 
-    public boolean insert(Pedido pedidos){
+    private Pedido getLast(){
+        return cliDao.getLast();
+    }
+
+    public Pedido insert(Pedido pedidos){
         pedidos.setId_pedido(cliDao.getNextId());
-        return cliDao.insert(pedidos);
+        if(cliDao.insert(pedidos)){
+            return getLast();
+        }
+        return null;
     }
 
     public boolean update(Pedido pedidos){

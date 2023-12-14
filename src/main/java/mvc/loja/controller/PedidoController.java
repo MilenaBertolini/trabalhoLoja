@@ -1,18 +1,28 @@
 package mvc.loja.controller;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+import mvc.loja.dto.ItemPedido;
 import mvc.loja.dto.Pedido;
+import mvc.loja.dto.Produto;
+import mvc.loja.entity.PedidoEntity;
 import mvc.loja.service.ClienteService;
 import mvc.loja.service.ItemPedidoService;
 import mvc.loja.service.PedidoService;
+import mvc.loja.service.ProdutoService;
 
 
 @Controller
@@ -26,6 +36,9 @@ public class PedidoController {
 
     @Autowired
     private ItemPedidoService itemService;
+
+    @Autowired
+    private ProdutoService produtoService;
 
     private static final String baseUrl = "pedido";   
     private static final String baseAtributo = "pedido";
@@ -57,16 +70,42 @@ public class PedidoController {
 
     @GetMapping(baseUrl + "/add")
     public String add(Model model){
-        model.addAttribute("editando", false);
+        model.addAttribute("produto", produtoService.getAll());
+        model.addAttribute("cliente", clienteService.getAll());
 
-        return "pedido";
+
+        return "criarPedido";
     }
 
     @PostMapping(baseUrl + "/insert")
-    public String insert(Pedido pedido, Model model){
-        pedidoService.insert(pedido);
+    public ResponseEntity insert(@RequestBody PedidoEntity pedido, Model model){
+        Date currentDate = new Date(System.currentTimeMillis());
+        Pedido ped = new Pedido();
+        ped.setData_pedido(currentDate);
+        ped.setId_cliente(pedido.getCliente());
+        ped.setObservacao_pedido("Pedido feito com sucesso!");
 
-        return getAll(model);
+        Pedido pedInserted = pedidoService.insert(ped);
+
+        List<ItemPedido> itens = new ArrayList<>();
+        pedido.getItens().forEach(i -> {
+            Produto prod = produtoService.getById(i.getItem());
+            itens.add(new ItemPedido(pedInserted.getId_pedido(), i.getItem(), i.getQuantidade(), prod.getPreco_venda(), prod));
+        });
+
+        double valorPedido = 0;
+
+        for (ItemPedido i : itens) {
+            itemService.insert(i);
+            i.getProduto().setQuantidade(i.getProduto().getQuantidade()-i.getQuantidade());
+            produtoService.update(i.getProduto());
+            valorPedido += i.getProduto().getPreco_venda() * i.getQuantidade();
+        }
+
+        pedInserted.setValor_pedido(valorPedido);
+        pedidoService.update(pedInserted);
+
+        return new ResponseEntity(HttpStatus.OK);
     }
     
     @PostMapping(baseUrl + "/update")
