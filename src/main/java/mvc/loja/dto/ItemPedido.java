@@ -11,4 +11,5 @@ public class ItemPedido {
     public int quantidade;
     public double valor_venda;
 
+    private Produto produto;
 }

@@ -14,16 +14,30 @@ public class ItemPedidoService {
     @Autowired
     private ItemPedidoDao cliDao;
 
+    @Autowired
+    private ProdutoService produtoService;
+
     public List<ItemPedido> getAll(){
-        return cliDao.getAll();
+        List<ItemPedido> itens = cliDao.getAll();
+
+        itens.forEach(i -> i.setProduto(produtoService.getById(i.getId_produto())));
+
+        return itens;
     }
 
     public List<ItemPedido> getAllByPedido(long pedido){
-        return cliDao.getAllByPedido(pedido);
+        List<ItemPedido> itens = cliDao.getAllByPedido(pedido);
+
+        itens.forEach(i -> i.setProduto(produtoService.getById(i.getId_produto())));
+
+        return itens;
     }
     
     public ItemPedido getById(Long id){
         ItemPedido item = cliDao.getById(id);
+
+        item.setProduto(produtoService.getById(item.getId_produto());
+
         return item;
     }
 

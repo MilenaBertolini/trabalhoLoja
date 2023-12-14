@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Atualiza Pedido</title>
+</head>
+<body>
+    <h2 class="title">Atualiza Pedido</h2>
+    <label class="label">Número do pedido: <label th:text="${pedido.id_pedido}"></label></label>
+    <label class="label">Data do pedido: <label th:text="${pedido.data_pedido}"></label></label>
+    <label class="label">Cliente: <label th:text="${pedido.Cliente.nome}"></label></label>
+    <label class="label">Email do Cliente: <label th:text="${pedido.Cliente.email}"></label></label>
+    <label class="label">Telefon do Cliente: <label th:text="${pedido.Cliente.telefone}"></label></label>
+    <label class="label">Número do pedido: <label th:text="${pedido.id_pedido}"></label></label>
+    <hr>
+    <h2>Itens:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Código Item</th>
+                <th>Nome</th>
+                <th>Valor Venda</th>
+                <th>Categoria</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item: ${pedido.itensPedidos}">
+                <td th:text="${item.Produto.id_produto}"></td>
+                <td th:text="${item.Produto.nome}"></td>
+                <td th:text="${item.valor_venda}"></td>
+                <td th:text="${item.Produto.Categoria.Nome}"></td>
+                <td th:text="${item.quantidade}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
