@@ -8,15 +8,15 @@
 </head>
 <body id="login">
     <div class="login-container">
-        <h2>Login</h2>
+        <h1>Login</h1>
         <form method="POST" action="usuario/login">
             <label for="">Email</label>
-            <input type="text" id="email" name="email" required placeholder="Email">
+            <input type="text" id="email" name="email" required placeholder="Ex.: seu.email@dominio.com ">
             <label for="">Senha</label>
-            <input type="password" id="senha" name="senha" required placeholder="Senha">
+            <input type="password" id="senha" name="senha" required placeholder="Informe a sua senha">
 
             <button type="submit" id="btnLogin">Entrar</button>
-            <h6 th:text="${mensagem}"> </h6>
+            <h2 th:text="${mensagem}"></h2>
         </form>
     </div>
 </body>

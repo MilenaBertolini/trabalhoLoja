@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>HOME</title>
 </head>
-<body>
+<body id="home">
     <div th:if="${usuario?.id_tipoUsuario} == 1">
         <a href="/tipoUsuario/getAll">Lista de Tipo Usuario</a>
         <a href="/usuario/getAll">Lista de Usuarios</a>
