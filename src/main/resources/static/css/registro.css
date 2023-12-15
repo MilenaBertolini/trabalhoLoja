@@ -19,6 +19,13 @@ form {
     gap: 20px;
     padding: 30px;
     color: white;
+    box-shadow: white;
+    background-color: #aaa7a785; 
+}
+
+h2{
+    color: #fdfbfb; 
+
 }
 
 form input[type="text"] {
@@ -29,3 +36,25 @@ form input[type="text"] {
     padding: 5px;
 }
 
+form input {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ffffff; 
+    border-radius: 5px;
+    background-color: #252121; 
+    color: #ffffff; 
+}
+
+div button {
+    padding: 10px;
+    background-color: #f309309a; 
+    color: #ffffff; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+div button:hover {
+    background-color: #7a0b06;
+}
