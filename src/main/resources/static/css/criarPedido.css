@@ -4,13 +4,6 @@ table, tr, th, td {
     margin: 0;
 }
 
-main         {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-}
-
 .criarPedido {
     width: 90%;
     margin: auto;

@@ -31,7 +31,8 @@
 
 
 .produtos > div {
-    background-color: #ffffff;    
+    background-color: rgb(117, 120, 122);
+    color: white;
     margin-bottom: 80px;
     margin-top: 40px;
     display: flex;
@@ -81,3 +82,4 @@
     border-radius: 3px;
     background-color: red;
 }
+
