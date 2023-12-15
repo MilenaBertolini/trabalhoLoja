@@ -7,29 +7,35 @@
     <link rel="stylesheet" th:href="@{/css/tabelas.css}">
     <title>Lista Usuario</title>
 </head>
-<body>
-    <table>
+<body class="rolesPag">
+    <main>
+        <table>
 
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Senha</th>
-                <th>Tipo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="usuarios: ${usuario}">
-                <td th:text="${usuarios.nome}"></td>
-                <td th:text="${usuarios.email}"></td>
-                <td th:text="${usuarios.senha}"></td>
-                <td th:text="${usuarios.tipoUsuario.nome}"></td>
-                <td><a th:href="@{'/usuario/getById?id=' + ${usuarios.id_usuario}}">Editar</a></td>
-                <td><a th:href="@{'/usuario/delete?id=' + ${usuarios.id_usuario}}">Excluir</a></td>
-            </tr>
-        </tbody>
-        <a href="/usuario/add">Inserir</a>
-        <a href="/home">Menu</a>
-    </table>
+            <thead>
+                <tr>
+                    <th>
+                        Nome
+                    </th>
+                    <th>Email</th>
+                    <th>Senha</th>
+                    <th>Tipo</th>
+                    <th class="colAcoes">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="usuarios: ${usuario}">
+                    <td th:text="${usuarios.nome}"></td>
+                    <td th:text="${usuarios.email}"></td>
+                    <td th:text="${usuarios.senha}"></td>
+                    <td th:text="${usuarios.tipoUsuario.nome}"></td>
+                    <td><div class="acoes"><a class="edit" th:href="@{'/usuario/getById?id=' + ${usuarios.id_usuario}}"></a><a class="delete" th:href="@{'/usuario/delete?id=' + ${usuarios.id_usuario}}"></a></div></td>
+                    
+    
+                </tr>
+            </tbody>
+            <a href="/usuario/add"><span class="inserir"></span></a>
+            <a href="/home">Menu</a>
+        </table>
+    </main>
 </body>
 </html>

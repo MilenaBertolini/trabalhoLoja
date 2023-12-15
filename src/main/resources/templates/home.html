@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
     <title>HOME</title>
 </head>
-<body id="home">
-    <div th:if="${usuario?.id_tipoUsuario} == 1">
-        <a href="/tipoUsuario/getAll">Lista de Tipo Usuario</a>
-        <a href="/usuario/getAll">Lista de Usuarios</a>
-    </div>
-    <a href="/cliente/getAll">Lista de Clientes</a>
-    <a href="/produto/getAll">Lista de Produtos</a>
-    <a href="/pedido/getAll">Lista de Pedidos</a>
-    <a href="/categoria/getAll">Lista de Categorias</a>
-    <a href="/pedido/add">Criar pedido</a>
+
+<body id="home" class="home">
+
+    <main>
+
+        <div class="opcoes">
+            <div>
+                <div>
+                    <img th:src="@{/img/clientes.png}" alt="">
+                    <a href="/cliente/getAll">Clientes</a>
+                </div>
+                <div>
+                    <img th:src="@{/img/produto.png}" alt="">
+                    <a href="/produto/getAll">Produtos</a>
+                </div>
+                <div>
+                    <img th:src="@{/img/Consultar_pedido.png}" alt="">
+                    <a href="/pedido/getAll">Consultar Pedidos</a>
+                </div>
+                <div>
+                    <img th:src="@{/img/categoria.png}" alt="">
+                    <a href="/categoria/getAll">Categorias</a>
+                </div>
+
+                
+            </div>
+            <div>
+                <div>
+                    <img th:src="@{/img/Gerar_pedido.png}" alt="">
+                    <a href="/pedido/add">Gerar pedido</a>
+                </div>
+                
+                <div th:if="${usuario?.id_tipoUsuario} == 1">
+                    <img th:src="@{/img/Gerenciar_Permissoes.png}" alt="">
+                    <a href="/tipoUsuario/getAll">Gerenciar Permissões</a>
+                </div>
+                
+                <div th:if="${usuario?.id_tipoUsuario} == 1">
+                    <img th:src="@{/img/Usuario.png}" alt="">
+                    <a href="/usuario/getAll">Usuários</a>
+                </div>
+            </div>
+            
+        </div>
+        
+    </main>
 </body>
+
 </html>

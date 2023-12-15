@@ -7,33 +7,38 @@
     <link rel="stylesheet" th:href="@{/css/tabelas.css}">
     <title>Lista Produto</title>
 </head>
-<body>
-    <table>
-
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Preço de Venda</th>
-                <th>Preço de Compra</th>
-                <th>Quantidade</th>
-                <th>Categoria</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="produto: ${produto}">
-                <td th:text="${produto.nome}"></td>
-                <td th:text="${produto.descricao}"></td>
-                <td th:text="${produto.preco_venda}"></td>
-                <td th:text="${produto.preco_compra}"></td>
-                <td th:text="${produto.quantidade}"></td>
-                <td th:text="${produto.categoria.nome}"></td>
-                <td><a th:href="@{'/produto/getById?id=' + ${produto.id_produto}}">Editar</a></td>
-                <td><a th:href="@{'/produto/delete?id=' + ${produto.id_produto}}">Excluir</a></td>
-            </tr>
-        </tbody>
-        <a href="/produto/add">Inserir</a>
+<body class="listaProdutos">
+    <header>
+        <a href="/cliente/getAll">Lista de Clientes</a>
+        <a href="/produto/getAll">Lista de Produtos</a>
+        <a href="/pedido/getAll">Lista de Pedidos</a>
         <a href="/home">Menu</a>
-    </table>
+    </header>
+    
+    <main>
+        <a href="/produto/add">Inserir</a>
+        <div class="wrapper-produto">
+            <div class="produto">
+                <div th:each="produto: ${produto}">
+                    <div>
+                        <div class="produto__imagem">
+                            <img class="imgproduto" th:src="@{/img/cachoeira.png}" alt="Imagem do produto">
+                        </div>
+                        <div class="produto__info">
+                            <h2 th:text="${produto.nome}"></h2>
+                            <p th:text="${produto.descricao}"></p>
+                            <p>Preço de venda: R$<span th:text="${produto.preco_venda}"></span></p>
+                            <p>Preço de compra: R$<span th:text="${produto.preco_compra}"></span></p>
+                            <p>Estoque: <span th:text="${produto.quantidade}"></span></p>
+                            <p>Categoria: <span th:text="${produto.categoria.nome}"></span></p>
+                            <a class="edit" th:href="@{'/produto/getById?id=' + ${produto.id_produto}}"></a>
+                            <a class="delete" th:href="@{'/produto/delete?id=' + ${produto.id_produto}}"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/usuario/add"><span class="inserir"></span></a>
+    </main>
 </body>
 </html>

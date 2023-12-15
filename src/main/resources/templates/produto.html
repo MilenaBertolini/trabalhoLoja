@@ -1,57 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Atualiza Produto</title>
 </head>
-<body>
-    <h2 class="title">Formulário de Registro</h2>
-    <div th:if="${editando} == true">
-        <form method="POST" action="/produto/update">
-    
-            <input type="hidden"  name="id_produto" th:value="${produto.id_produto}">
-            <label class="label">Nome</label>
-            <input type="text" name="nome" th:value="${produto.nome}">
-            <label class="label">Descrição</label>
-            <input type="text" name="descricao" th:value="${produto.descricao}">
-            <label class="label">Preço de Venda</label>
-            <input type="text" name="preco_venda" th:value="${produto.preco_venda}">
-            <label class="label">Preço de Compra</label>
-            <input type="text" name="preco_compra" th:value="${produto.preco_compra}">
-            <label class="label">Quantidade</label>
-            <input type="number" name="quantidade" th:value="${produto.quantidade}">
-            <label class="label">Categoria</label>
-            <select name="id_categoria">
-                <option th:each="i : ${categoria}" th:value="${i.id_categoria}" th:text="${i.nome}" th:selected="${i.id_categoria == produto.id_categoria}">
-                </option>
-            </select>
-    
-            <button type="submit">Atualizar</button>
-        </form>
-    </div>
-    <div th:if="${editando} == false">
-        <form method="POST" action="/produto/insert">
-    
-            <label class="label">Nome</label>
-            <input type="text" name="nome">
-            <label class="label">Descrição</label>
-            <input type="text" name="descricao">
-            <label class="label">Preço de Venda</label>
-            <input type="text" name="preco_venda">
-            <label class="label">Preço de Compra</label>
-            <input type="text" name="preco_compra">
-            <label class="label">Quantidade</label>
-            <input type="number" name="quantidade">
-            <label class="label">Categoria</label>
-            <select name="id_categoria">
-                <option th:each="i : ${categoria}" th:value="${i.id_categoria}" th:text="${i.nome}">
-                </option>
-            </select>
 
-            <button type="submit">Inserir</button>
-        </form>
-    </div>
+<body>
+    <main>
+        <h2 class="title">Formulário de Registro</h2>
+        <div th:if="${editando} == true">
+            <form method="POST" action="/produto/update">
+
+                <input type="hidden" name="id_produto" th:value="${produto.id_produto}">
+                <label class="label">Nome</label>
+                <input type="text" name="nome" th:value="${produto.nome}">
+                <label class="label">Descrição</label>
+                <input type="text" name="descricao" th:value="${produto.descricao}">
+                <label class="label">Preço de Venda</label>
+                <input type="text" name="preco_venda" th:value="${produto.preco_venda}">
+                <label class="label">Preço de Compra</label>
+                <input type="text" name="preco_compra" th:value="${produto.preco_compra}">
+                <label class="label">Quantidade</label>
+                <input type="number" name="quantidade" th:value="${produto.quantidade}">
+                <label class="label">Categoria</label>
+                <select name="id_categoria">
+                    <option th:each="i : ${categoria}" th:value="${i.id_categoria}" th:text="${i.nome}"
+                        th:selected="${i.id_categoria == produto.id_categoria}">
+                    </option>
+                </select>
+
+                <button type="submit">Atualizar</button>
+            </form>
+        </div>
+        <div th:if="${editando} == false">
+            <form method="POST" action="/produto/insert">
+
+                <label class="label">Nome</label>
+                <input type="text" name="nome">
+                <label class="label">Descrição</label>
+                <input type="text" name="descricao">
+                <label class="label">Preço de Venda</label>
+                <input type="text" name="preco_venda">
+                <label class="label">Preço de Compra</label>
+                <input type="text" name="preco_compra">
+                <label class="label">Quantidade</label>
+                <input type="number" name="quantidade">
+                <label class="label">Categoria</label>
+                <select name="id_categoria">
+                    <option th:each="i : ${categoria}" th:value="${i.id_categoria}" th:text="${i.nome}">
+                    </option>
+                </select>
+
+                <button type="submit">Inserir</button>
+            </form>
+        </div>
+    </main>
 </body>
+
 </html>

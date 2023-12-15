@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +8,33 @@
     <link rel="stylesheet" th:href="@{/css/tabelas.css}">
     <title>Lista Categoria</title>
 </head>
-<body>
-    <table>
 
-        <thead>
-            <tr>
-                <th>Nome</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="categoria: ${categoria}">
-                <td th:text="${categoria.nome}"></td>
-                <td><a th:href="@{'/categoria/getById?id=' + ${categoria.id_categoria}}">Editar</a></td>
-                <td><a th:href="@{'/categoria/delete?id=' + ${categoria.id_categoria}}">Excluir</a></td>
-            </tr>
-        </tbody>
-        <a href="/categoria/add">Inserir</a>
-        <a href="/home">Menu</a>
-    </table>
+<body>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th class="colAcoes">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="categoria: ${categoria}">
+                    <td th:text="${categoria.nome}"></td>
+                    <td>
+                        <div class="acoes">
+                            <a class="edit" th:href="@{'/categoria/getById?id=' + ${categoria.id_categoria}}"></a><a
+                                class="delete" th:href="@{'/categoria/delete?id=' + ${categoria.id_categoria}}"></a>
+                        </div>
+                    </td>
+
+                </tr>
+            </tbody>
+            <a href="/categoria/add">Inserir</a>
+            <a href="/home">Menu</a>
+        </table>
+        <a href="/usuario/add"><span class="inserir"></span></a>
+    </main>
 </body>
+
 </html>

@@ -73,5 +73,3 @@ delete from itemPedido;
 select * from tipoUsuario
 
 
-
-

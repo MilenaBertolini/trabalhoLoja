@@ -139,32 +139,6 @@ nav a:hover {
     
 }
 
-.produto {
-    width: 30%;
-    float: left;
-    margin: 1%;
-    background-color: #dad5d5;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    box-sizing: border-box;
-    
-}
-
-.produto img {
-    max-width: 100%;
-    height: auto;
-}
-
-.produto h2 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.produto p {
-    font-size: 1em;
-    color: #666;
-}
-
 .btn-adicionar {
     display: block;
     width: 100%;
@@ -177,3 +151,4 @@ nav a:hover {
     font-size: 1em;
     cursor: pointer;
 }
+

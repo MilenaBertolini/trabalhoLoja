@@ -7,23 +7,29 @@
     <link rel="stylesheet" th:href="@{/css/tabelas.css}">
     <title>Lista Tipo Usuario</title>
 </head>
-<body>
-    <table>
+<body class="rolesPag">
+    <main>
+        <table>
 
-        <thead>
-            <tr>
-                <th>Nome</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="usuarios: ${tipoUsuario}">
-                <td th:text="${usuarios.nome}"></td>
-                <td><a th:href="@{'/tipoUsuario/getById?id=' + ${usuarios.id_tipoUsuario}}">Editar</a></td>
-                <td><a th:href="@{'/tipoUsuario/delete?id=' + ${usuarios.id_tipoUsuario}}">Excluir</a></td>
-            </tr>
-        </tbody>
-        <a href="/tipoUsuario/add">Inserir</a>
-        <a href="/home">Menu</a>
-    </table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th class="colAcoes">Ações</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                <tr th:each="usuarios: ${tipoUsuario}">
+                    <td th:text="${usuarios.nome}"></td>
+                    <td><div class="acoes">
+                        <a class="edit" th:href="@{'/tipoUsuario/getById?id=' + ${usuarios.id_tipoUsuario}}"></a><a class="delete" th:href="@{'/tipoUsuario/delete?id=' + ${usuarios.id_tipoUsuario}}"></a>
+                    </div></td>
+                </tr>
+            </tbody>
+            <a href="/usuario/add"><span class="inserir"></span></a>
+            <a href="/tipoUsuario/add">Inserir</a>
+            <a href="/home">Menu</a>
+        </table>
+    </main>
 </body>
 </html>

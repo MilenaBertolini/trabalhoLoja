@@ -7,33 +7,35 @@
     <title>Atualiza Usuario</title>
 </head>
 <body>
-    <h2 class="title">Formulário de Registro</h2>
-    <div th:if="${editando} == true">
-        <form method="POST" action="/usuario/update">
-    
-            <input type="hidden"  name="id_usuario" th:value="${usuario.id_usuario}">
-            <input type="hidden"  name="id_tipoUsuario" th:value="${usuario.id_tipoUsuario}">
-            <label class="label">Nome</label>
-            <input type="text" name="nome" th:value="${usuario.nome}">
-            <label class="label">Email</label>
-            <input type="text" name="email" th:value="${usuario.email}">
-    
-            <button type="submit">Atualizar</button>
-        </form>
-    </div>
-    <div th:if="${editando} == false">
-        <form method="POST" action="/usuario/insert">
-    
-            <input type="hidden"  name="id_tipoUsuario" th:value="2">
-            <label class="label">Nome</label>
-            <input type="text" name="nome">
-            <label class="label">Email</label>
-            <input type="text" name="email">
-            <label class="label">Senha</label>
-            <input type="password" name="senha">
-    
-            <button type="submit">Inserir</button>
-        </form>
-    </div>
+    <main>
+        <h2 class="title">Formulário de Registro</h2>
+        <div th:if="${editando} == true">
+            <form method="POST" action="/usuario/update">
+        
+                <input type="hidden"  name="id_usuario" th:value="${usuario.id_usuario}">
+                <input type="hidden"  name="id_tipoUsuario" th:value="${usuario.id_tipoUsuario}">
+                <label class="label">Nome</label>
+                <input type="text" name="nome" th:value="${usuario.nome}">
+                <label class="label">Email</label>
+                <input type="text" name="email" th:value="${usuario.email}">
+        
+                <button type="submit">Atualizar</button>
+            </form>
+        </div>
+        <div th:if="${editando} == false">
+            <form method="POST" action="/usuario/insert">
+        
+                <input type="hidden"  name="id_tipoUsuario" th:value="2">
+                <label class="label">Nome</label>
+                <input type="text" name="nome">
+                <label class="label">Email</label>
+                <input type="text" name="email">
+                <label class="label">Senha</label>
+                <input type="password" name="senha">
+        
+                <button type="submit">Inserir</button>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
