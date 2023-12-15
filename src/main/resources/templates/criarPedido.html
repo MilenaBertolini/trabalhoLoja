@@ -40,7 +40,7 @@
                         <a href="/cliente/add"><button class="btnPedidoAdd">Adicionar cliente</button></a>
                         <button class="btnPedidoAdd" onclick="FinalizaPedido()">Fechar pedido</button>
                     </span>
-                    <div id="valorTotal"></div>
+                    <h3 class="precoTotal">Valor Total: <span class="valorTotal" id="valorTotal"></span></h3>
     
                 </div>
                 <div class="tabelaPedido">
@@ -127,7 +127,7 @@
 
             valor += list.filter(p => p.id_produto == id)[0].preco_venda * quantidade;
 
-            document.getElementById('valorTotal').innerHTML = '<h3><b>Valor total: ' + valor + '</b></h3>'
+            document.getElementById('valorTotal').innerHTML = "R$ " + valor;
         }
         else {
             alert('Preencha a quantidade');
@@ -135,9 +135,9 @@
     }
 
     function deleteItem(id) {
-        var index = itens.findIndex(i => i.item == id);
-        if (index >= 0) {
-            itens.splice(index, 1);
+        var index = itens.findIndex(i => i.cliente == id);
+        if (index) {
+            itens.slice(index, 1);
             var quantidade = document.getElementById('txt_' + id).value;
             document.getElementById('addButton' + id).disabled = false;
             document.getElementById('delButton' + id).disabled = true;
@@ -145,7 +145,7 @@
             document.getElementById('txt_' + id).value = 0;
 
             valor -= list.filter(p => p.id_produto == id)[0].preco_venda * quantidade;
-            document.getElementById('valorTotal').innerHTML = '<h3><b>Valor total: ' + valor + '</b></h3>'
+            document.getElementById('valorTotal').innerHTML = "R$ " + valor;
         }
     }
 
