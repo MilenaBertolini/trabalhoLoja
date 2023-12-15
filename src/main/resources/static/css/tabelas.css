@@ -41,7 +41,7 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 body {
@@ -117,12 +117,9 @@ table a, header a {
 }
 
 .produto > div  {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
     width: calc(28% - 20px);
-    background: linear-gradient(to right, #000000, #6d6b6b); 
+    background: grey; 
     color: rgb(255, 255, 255);
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 80px;
     overflow: hidden;
 }
@@ -150,8 +147,8 @@ table a, header a {
 }
 
 .listaProdutos {
-    background-image: url(../img/Trabalho_MVC.png);
-    background-size: cover;
+    background-image: none;
+    background-color: rgba(52, 58, 63, 1);
 }
 
 .inserir {
@@ -169,3 +166,32 @@ table a, header a {
 .inserir:hover {
     scale: 1.1;
 }
+
+.btnPedidoAdd {
+    outline: none;
+    border: none;
+    padding: 3px 6px;
+    border-radius: 3px;
+    width: 100px;
+    cursor: pointer;
+    transition: all .2s;
+    background-color: #000000;
+    color: white;
+    border: 1px solid white;
+}
+
+.btnPedidoAdd:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+
+}
+
+.btnPedidoAdd:active {
+    transform: scale(0.9);
+}
+
+select, input {
+    background-color: black;
+    color: white;
+}
+

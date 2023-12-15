@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/tabelas.css}">
+    <link rel="stylesheet" th:href="@{/css/criarPedido.css}">
     <title>Venda</title>
     <script th:inline="javascript">
         var list = /*[[${produto}]]*/[];
@@ -13,49 +14,65 @@
 </head>
 
 <body>
-    <a id="home" href="/home">Menu</a>
+    <header>
+        <a id="home" href="/home">Menu</a>
+    </header>
 
     <main>
-        <h2>Selecione o cliente:</h2>
-        <a href="/cliente/add">Adicione o cliente</a>
-        <select id="id_cliente" name="id_cliente">
-            <option th:each="i : ${cliente}" th:value="${i.id_cliente}" th:text="${i.nome}">
-            </option>
-        </select>
-        <h2>Selecione o item:</h2>
-        <table>
 
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Preço de Venda</th>
-                    <th>Quantidade</th>
-                    <th>Categoria</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="produto: ${produto}">
-                    <td th:text="${produto.nome}"></td>
-                    <td th:text="${produto.descricao}"></td>
-                    <td th:text="${produto.preco_venda}"></td>
-                    <td th:text="${produto.quantidade}"></td>
-                    <td th:text="${produto.Categoria.nome}"></td>
-                    <td><input type="number" th:id="'txt_' + ${produto.id_produto}" /></td>
-                    <td><button th:id="'addButton' + ${produto.id_produto}"
-                            th:onclick="'addItem(' + ${produto.id_produto} + ')'">Add</button></td>
-                    <td><button disabled th:id="'delButton' + ${produto.id_produto}"
-                            th:onclick="'deleteItem(' + ${produto.id_produto} + ')'">Remove</button></td>
-                </tr>
-            </tbody>
-        </table>
-        <div id="valorTotal">
 
+        <div class="criarPedido">
+            <div class="pedidoInfo">
+                <h2>Selecione o cliente:</h2>
+                <select id="id_cliente" name="id_cliente">
+                    <option th:each="i : ${cliente}" th:value="${i.id_cliente}" th:text="${i.nome}">
+                    </option>
+                </select>
+                <span class="caixaBtn">
+                    <a href="/cliente/add"><button class="btnPedidoAdd">Adicionar cliente</button></a>
+                    <button class="btnPedidoAdd" onclick="FinalizaPedido()">Fechar pedido</button>
+                </span>
+                <div id="valorTotal"></div>
+
+            </div>
+            <div class="tabelaPedido">
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Preço de Venda</th>
+                            <th>Estoque</th>
+                            <th>Categoria</th>
+                            <th>Quantidade</th>
+                            <th class="colAcoes">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="produto: ${produto}">
+                            <td th:text="${produto.nome}"></td>
+                            <td th:text="${produto.descricao}"></td>
+                            <td th:text="${produto.preco_venda}"></td>
+                            <td th:text="${produto.quantidade}"></td>
+                            <td th:text="${produto.Categoria.nome}"></td>
+                            <td><input type="number" th:id="'txt_' + ${produto.id_produto}" /></td>
+                            <td class="caixaBtn">
+                                <button class="btnPedidoAdd" th:id="'addButton' + ${produto.id_produto}"
+                                    th:onclick="'addItem(' + ${produto.id_produto} + ')'">Add</button>
+                                <button class="btnPedidoAdd" disabled th:id="'delButton' + ${produto.id_produto}"
+                                    th:onclick="'deleteItem(' + ${produto.id_produto} + ')'">Remove</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <button onclick="FinalizaPedido()">Fechar pedido</button>
+
+
     </main>
 
-    
+
 </body>
 
 </html>

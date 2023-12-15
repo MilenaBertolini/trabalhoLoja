@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+header a {
+    color: white;
+    text-decoration: none;
+}
+body {
+    background-color: #2D2D30;
+}
+
+.formPesquisa input {
+    width: 500px;
+}
+
+
+.caixaImagem {
+    height: 400px;
+    width: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.caixaImagem img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: cover;
+
+}
+
+.produtos>div {
+    width: 400px;
+    margin: auto;
+    display: flex;
+}
+
+.caixaTexto {
+
+    padding: 50px;
+}
+
+.caixaTexto p {
+    margin: 20px 0px;
+}
+
+
+.produtos input:hover {
+    box-shadow: 0px 0px 0px black;
+}
+
+
+.produtos > div {
+    background-color: #ffffff;    
+    margin-bottom: 80px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.produtos {
+    width: 33%;
+    display: inline-block;
+}
+
+.preco {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.inserir {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-image: url(../img/add.png);
+    background-size: cover;
+    display: block;
+    width: 65px;
+    height: 65px;
+    transition: all .2s ease-in-out;
+}
+
+.inserir:hover {
+    scale: 1.1;
+}
+
+.edit {
+    background-image: url(../img/edit-icon.png);
+    transition: all .3s ease-in-out;
+}
+
+.edit:hover {
+    background-color: rgb(17, 58, 9);
+    transform: scale(1.1);
+    border-radius: 3px;
+}
+
+.delete {
+    transition: all .3s ease-in-out;
+    background-image: url(../img/close-icon.png);
+}
+
+.delete:hover {
+    transform: scale(1.1);
+    border-radius: 3px;
+    background-color: red;
+}
