@@ -14,44 +14,62 @@
 
         <div class="opcoes">
             <div>
-                <div>
-                    <img th:src="@{/img/clientes.png}" alt="">
-                    <a href="/cliente/getAll">Clientes</a>
-                </div>
-                <div>
-                    <img th:src="@{/img/produto.png}" alt="">
-                    <a href="/produto/getAll">Produtos</a>
-                </div>
-                <div>
-                    <img th:src="@{/img/Consultar_pedido.png}" alt="">
-                    <a href="/pedido/getAll">Consultar Pedidos</a>
-                </div>
-                <div>
-                    <img th:src="@{/img/categoria.png}" alt="">
-                    <a href="/categoria/getAll">Categorias</a>
-                </div>
-
-                
+                <a href="/cliente/getAll">
+                    <div>
+                        <img th:src="@{/img/clientes.png}" alt="">
+                        <p>Clientes</p>
+                    </div>
+                </a>
+                <a href="/produto/getAll">
+                    <div>
+                        <img th:src="@{/img/produto.png}" alt="">
+                        <p>Produtos</p>
+                    </div>
+                </a>
+                <a href="/pedido/getAll">
+                    <div>
+                        <img th:src="@{/img/Consultar_pedido.png}" alt="">
+                        <p>Consultar Pedidos</p>
+                    </div>
+                </a>
+                <a href="/categoria/getAll">
+                    <div>
+                        <img th:src="@{/img/categoria.png}" alt="">
+                        <p>Categorias</p>
+                    </div>
+                </a>
             </div>
             <div>
-                <div>
-                    <img th:src="@{/img/Gerar_pedido.png}" alt="">
-                    <a href="/pedido/add">Gerar pedido</a>
-                </div>
-                
-                <div th:if="${usuario?.id_tipoUsuario} == 1">
-                    <img th:src="@{/img/Gerenciar_Permissoes.png}" alt="">
-                    <a href="/tipoUsuario/getAll">Gerenciar Permissões</a>
-                </div>
-                
-                <div th:if="${usuario?.id_tipoUsuario} == 1">
-                    <img th:src="@{/img/Usuario.png}" alt="">
-                    <a href="/usuario/getAll">Usuários</a>
-                </div>
+
+                <a href="/pedido/add">
+                    <div>
+                        <img th:src="@{/img/Gerar_pedido.png}" alt="">
+                        <p>Gerar pedido</p>
+
+                    </div>
+                </a>
+
+
+                <a href="/tipoUsuario/getAll">
+                    <div th:if="${usuario?.id_tipoUsuario} == 1">
+                        <img th:src="@{/img/Gerenciar_Permissoes.png}" alt="">
+                        <p>Gerenciar permissões</p>
+
+                    </div>
+                </a>
+                <a href="/usuario/getAll">
+
+                    <div th:if="${usuario?.id_tipoUsuario} == 1">
+                        <img th:src="@{/img/Usuario.png}" alt="">
+                        <p>Usuários</p>
+
+                    </div>
+                </a>
+
             </div>
-            
+
         </div>
-        
+
     </main>
 </body>
 
