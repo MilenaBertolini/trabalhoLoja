@@ -135,9 +135,9 @@
     }
 
     function deleteItem(id) {
-        var index = itens.findIndex(i => i.cliente == id);
-        if (index) {
-            itens.slice(index, 1);
+        var index = itens.findIndex(i => i.item == id);
+        if (index >= 0) {
+            itens.splice(index, 1);
             var quantidade = document.getElementById('txt_' + id).value;
             document.getElementById('addButton' + id).disabled = false;
             document.getElementById('delButton' + id).disabled = true;
