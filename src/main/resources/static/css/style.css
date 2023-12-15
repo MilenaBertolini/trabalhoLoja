@@ -189,6 +189,8 @@ footer {
     padding: 20px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
     /* text-align: center; */
 }
 
@@ -204,6 +206,7 @@ footer div:nth-child(2){
 
 footer p{
     font-size: 20px;
+    margin: 10px 0px;
 }
 
 #direitos{
@@ -248,20 +251,30 @@ footer img{
     border-radius: 50%;
 }
 
+#instagram, #facebook, #twitter, #youtube{
+    cursor: pointer;
+    transition: 5ms;
+
+}
+
 #instagram:hover{
     background-color: #bc2a8d ;
+    transform: scale(1.2);
 }
 
 #facebook:hover{
     background-color: #3b5998;
+    transform: scale(1.2);
 }
 
 #twitter:hover{
     background-color: #1DA1F2;
+    transform: scale(1.2);
 }
 
 #youtube:hover{
     background-color: #CD201f;
+    transform: scale(1.2);
 }
 
 
