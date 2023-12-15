@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #030b45;
+    background-image: url(../img/home.png);
     
 }
 
@@ -30,7 +30,7 @@
     margin-bottom: 50px;
 }
 .opcoes > div > a > div {
-    background-color: #131313;
+    background-color: #424242;
     width: 300px;
     height: 200px;
     border-radius: 20px;
@@ -38,6 +38,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: 3ms;
+}
+
+.opcoes > div > a > div:hover {
+    transform: scale(1.1);
+    background-color: #8f8c8c;
 }
 
 .opcoes img {
