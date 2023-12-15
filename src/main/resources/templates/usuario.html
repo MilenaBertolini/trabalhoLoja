@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/registro.css}">
     <title>Atualiza Usuario</title>
 </head>
 <body>
     <main>
-        <h2 class="title">Formulário de Registro</h2>
+        <h2 class="title">Cadastro de Usuário</h2>
         <div th:if="${editando} == true">
             <form method="POST" action="/usuario/update">
         
                 <input type="hidden"  name="id_usuario" th:value="${usuario.id_usuario}">
                 <input type="hidden"  name="id_tipoUsuario" th:value="${usuario.id_tipoUsuario}">
-                <label class="label">Nome</label>
+                <label class="label">Nome:</label>
                 <input type="text" name="nome" th:value="${usuario.nome}">
-                <label class="label">Email</label>
+                <label class="label">Email:</label>
                 <input type="text" name="email" th:value="${usuario.email}">
         
                 <button type="submit">Atualizar</button>
