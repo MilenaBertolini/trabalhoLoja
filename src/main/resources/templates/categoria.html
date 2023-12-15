@@ -11,10 +11,10 @@
 
 
     <main>
-        <h2 class="title">Formulário de Registro</h2>
+       
         <div th:if="${editando} == true">
             <form method="POST" action="/categoria/update">
-        
+                <h2 class="title">Formulário de Registro</h2>
                 <input type="hidden"  name="id_categoria" th:value="${categoria.id_categoria}">
                 <label class="label">Nome</label>
                 <input type="text" name="nome" th:value="${categoria.nome}">
@@ -24,7 +24,7 @@
         </div>
         <div th:if="${editando} == false">
             <form method="POST" action="/categoria/insert">
-        
+                <h2 class="title">Formulário de Registro</h2>
                 <label class="label">Nome</label>
                 <input type="text" name="nome">
         

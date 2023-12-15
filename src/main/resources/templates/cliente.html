@@ -11,10 +11,10 @@
 
 <body>
     <main>
-        <h2 class="title">Cadastro de Clientes</h2>
+        
         <div th:if="${editando} == true">
             <form method="POST" action="/cliente/update">
-
+                <h2 class="title">Cadastro de Clientes</h2>
                 <input type="hidden" name="id_cliente" th:value="${cliente.id_cliente}">
                 <label class="label">Nome</label>
                 <input type="text" name="nome" th:value="${cliente.nome}">
@@ -32,7 +32,7 @@
         </div>
         <div th:if="${editando} == false">
             <form method="POST" action="/cliente/insert">
-
+                <h2 class="title">Cadastro de Clientes</h2>
                 <label class="label">Nome</label>
                 <input type="text" name="nome">
                 <label class="label">Email</label>
