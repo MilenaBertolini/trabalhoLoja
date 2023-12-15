@@ -46,7 +46,7 @@ a:hover {
 
 body {
     background-color: #2B2F35;
-    background-image: url(../img/tabelas.png);
+    
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
@@ -55,6 +55,8 @@ body {
     line-height: 1.5;
     
 }
+
+
 
 table a, header a {
     color: white;
