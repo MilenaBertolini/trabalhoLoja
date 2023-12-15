@@ -72,15 +72,11 @@ foreign key(id_produto) references produto(id_produto)
 INSERT INTO categoria (id_categoria, nome)
 VALUES (1, 'Eletrônicos');
 
+
 INSERT INTO categoria (id_categoria, nome)
 VALUES (2, 'Roupas');
 
-INSERT INTO produto (id_produto, nome, descricao, preco_venda, preco_compra, quantidade, id_categoria)
-VALUES (1, 'Produto A', 'Descrição do Produto A', 29.99, 15.00, 100, 1);
-
-INSERT INTO produto (id_produto, nome, descricao, preco_venda, preco_compra, quantidade, id_categoria)
-VALUES (2, 'Produto B', 'Descrição do Produto B', 49.99, 25.00, 50, 2);
-
+-- Inserção de clientes
 INSERT INTO cliente (id_cliente, nome, email, endereco, telefone, obervacao_cliente)
 VALUES
 (1, 'João Silva', 'joao.silva@email.com', 'Rua A, 123', '(11) 1234-5678', 'Cliente VIP'),
@@ -94,8 +90,14 @@ VALUES
 (9, 'Gustavo Oliveira', 'gustavo.oliveira@email.com', 'Praça I, 987', '(99) 3333-4444', 'Preferência por contato por e-mail'),
 (10, 'Isabel Lima', 'isabel.lima@email.com', 'Alameda J, 321', '(00) 9999-8888', 'Cliente em potencial');
 
-
-select * from produto;
-
-
+INSERT INTO produto (id_produto, nome, descricao, preco_venda, preco_compra, quantidade, id_categoria) values
+(1, 'Produto A', 'Descrição do Produto', 29.99, 15.00, 100, 1),
+(2, 'Produto B', 'Descrição do Produto', 59.99, 40.00, 20, 2),
+(3, 'Produto C', 'Descrição do Produto', 35.99, 19.00, 79, 1),
+(4, 'Produto D', 'Descrição do Produto', 40.99, 23.00, 54, 2),
+(5, 'Produto E', 'Descrição do Produto', 69.99, 35.00, 6, 1),
+(6, 'Produto F', 'Descrição do Produto', 88.99, 29.00, 59, 2),
+(7, 'Produto G', 'Descrição do Produto', 36.99, 25.00, 16, 2),
+(8, 'Produto H', 'Descrição do Produto', 94.99, 78.00, 31, 1),
+(9, 'Produto J', 'Descrição do Produto', 64.99, 40.00, 9, 2);
 

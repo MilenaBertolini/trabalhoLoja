@@ -27,8 +27,7 @@
         <main>
             <section class="produtos" th:each="produto : ${produto}">
                 <div>
-                    <div class="caixaImagem"><img class="imgproduto"
-                            src="https://m.media-amazon.com/images/I/81DHdkzgECL._AC_SL1500_.jpg" alt="Imagem do produto">
+                    <div class="caixaImagem"><img class="imgproduto" th:src="@{'/img/0'+${produto.id_produto}+'.png'}" alt="Imagem do produto">
                     </div>
                     <div class="caixaTexto">
                         <h2 th:text="${produto.nome}"></h2>
