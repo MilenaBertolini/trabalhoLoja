@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #000000;
+    background-color: #030b45;
     
 }
 
@@ -29,7 +29,7 @@
 .opcoes > div:nth-child(1) {
     margin-bottom: 50px;
 }
-.opcoes > div > div {
+.opcoes > div > a > div {
     background-color: #131313;
     width: 300px;
     height: 200px;
