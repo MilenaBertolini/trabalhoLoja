@@ -152,3 +152,101 @@ nav a:hover {
     cursor: pointer;
 }
 
+#erroLogin{
+    text-align: center;
+    background-image: url(../img/erroLogin.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: white;
+    overflow: hidden;
+}
+
+#erroLogin h1{
+    margin-top: 160px;
+    font-size: 90px;
+}
+#erroLogin h2{
+    font-size: 50px;
+    margin-top: -50px;
+}
+
+footer {
+    margin: 0px;
+    background-color: #1F1F1F;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    /* text-align: center; */
+}
+
+footer div{
+    text-align: center;
+    width: 33%;
+}
+
+footer div:nth-child(2){
+    border-left: 2px double #f7111177;
+    border-right: 2px double #f7111177;
+}
+
+footer p{
+    font-size: 20px;
+}
+
+#direitos{
+font-size: 14px;
+}
+
+#enviar{
+    background-color: #b1b1b1; 
+    cursor: pointer;
+    transition: 4ms;
+}
+
+#enviar:hover{
+    transform: scale(0.9);
+}
+
+#enviar:active{
+    background-color: #be9090; 
+}
+
+#logo{
+    width: 150px;
+    border: none;
+}
+
+footer form{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+footer input, footer button{
+    margin: 2px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+footer img{
+    margin: 0px 10px;
+    border: 2px solid rgb(77, 74, 74);
+    border-radius: 50%;
+}
+
+#instagram:hover{
+    background-color: #bc2a8d ;
+}
+
+#facebook:hover{
+    background-color: #3b5998;
+}
+
+#twitter:hover{
+    background-color: #1DA1F2;
+}
+
+#youtube:hover{
+    background-color: #CD201f;
+}
