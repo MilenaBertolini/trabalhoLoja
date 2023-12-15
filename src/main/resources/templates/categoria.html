@@ -8,8 +8,6 @@
     <title>Categoria</title>
 </head>
 <body>
-
-
     <main>
        
         <div th:if="${editando} == true">
@@ -32,30 +30,5 @@
             </form>
         </div>
     </main>
-    <footer>
-        <div>
-         <h1>Contatos</h1>
-         <p>34 9 91234 5678</p>
-         <p>admin@dominio.com</p>
-        </div>
-        <div>
-            <img id="logo" th:src="@{/img/1.png}" width="100px" alt="">
-            <p id="direitos">Nenhum direito reservado</p>
-        </div>
-        <div>
-            <form action="">
-                <label for="InscrevaSe">Inscreva -se:</label>
-                <br>
-                <input type="text" name="InscrevaSe" placeholder="Seu E-mail">
-                <input id="enviar" type="button" value="✔️">
-            </form>
-            <p>Siga-nos:</p>
-            <img id="instagram" th:src="@{/img/instagram.png}" alt="">
-            <img id="facebook" th:src="@{/img/facebook.png}" alt="">
-            <img id="twitter" th:src="@{/img/twitter.png}" alt="">
-            <img id="youtube" th:src="@{/img/youtube.png}" alt="">
-            
-        </div>
-    </footer>
 </body>
 </html>
