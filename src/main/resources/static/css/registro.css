@@ -29,3 +29,6 @@ form input[type="text"] {
     padding: 5px;
 }
 
+form input[type="button"] {
+    padding: 30px;
+}
