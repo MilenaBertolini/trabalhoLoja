@@ -10,33 +10,43 @@
 </head>
 
 <body>
-    <header>
-        <a href="/home">Menu</a>
-    </header>
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th class="colAcoes">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="categoria: ${categoria}">
-                    <td th:text="${categoria.nome}"></td>
-                    <td>
-                        <div class="acoes">
-                            <a class="edit" th:href="@{'/categoria/getById?id=' + ${categoria.id_categoria}}"></a><a
-                                class="delete" th:href="@{'/categoria/delete?id=' + ${categoria.id_categoria}}"></a>
-                        </div>
-                    </td>
-
-                </tr>
-            </tbody>
-            
-        </table>
-        <a href="/categoria/add"><span class="inserir"></span></a>
-    </main>
+    
+    <div class="fundo">
+        <header>
+            <nav>
+                <ul><a href="/home">Home</a></ul>
+                <ul><a href="/cliente/getAll">Clientes</a></ul>
+                <ul><a href="/produto/getAll">Produtos</a></ul>
+                <ul><a href="/pedido/getAll">Consultar Pedidos</a></ul>
+                <ul><a href="/categoria/getAll">Categorias</a></ul>
+                <ul><a href="/pedido/add">Gerar pedido</a></ul>
+            </nav>
+        </header>
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th class="colAcoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="categoria: ${categoria}">
+                        <td th:text="${categoria.nome}"></td>
+                        <td>
+                            <div class="acoes">
+                                <a class="edit" th:href="@{'/categoria/getById?id=' + ${categoria.id_categoria}}"></a><a
+                                    class="delete" th:href="@{'/categoria/delete?id=' + ${categoria.id_categoria}}"></a>
+                            </div>
+                        </td>
+    
+                    </tr>
+                </tbody>
+                
+            </table>
+            <a href="/categoria/add"><span class="inserir"></span></a>
+        </main>
+    </div>
 
     <footer>
         <div>
