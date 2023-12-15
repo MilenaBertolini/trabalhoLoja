@@ -10,7 +10,9 @@
 </head>
 
 <body>
-
+    <header>
+        <a href="/home">Menu</a>
+    </header>
     <main>
         <table>
             <thead>
@@ -20,6 +22,7 @@
                     <th>Data</th>
                     <th>Valor Total</th>
                     <th>Observacao</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,9 +35,8 @@
                     <td><a th:href="@{'/pedido/getById?id=' + ${pedido.id_pedido}}">Visualizar</a></td>
                 </tr>
             </tbody>
-            <a href="/home">Menu</a>
+            
         </table>
-        <a href="/usuario/add"><span class="inserir"></span></a>
     </main>
     
 </body>

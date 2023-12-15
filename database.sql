@@ -33,6 +33,11 @@ telefone varchar(20),
 obervacao_cliente varchar(255)
 );
 
+create table categoria(
+id_categoria bigint primary key,
+nome varchar(255)
+);
+
 create table produto(
 id_produto bigint primary key,
 nome varchar(255),
@@ -42,11 +47,6 @@ preco_compra numeric(15,2),
 quantidade int,
 id_categoria bigint,
 foreign key(id_categoria) references categoria(id_categoria)
-);
-
-create table categoria(
-id_categoria bigint primary key,
-nome varchar(255)
 );
 
 create table pedido(
@@ -69,7 +69,33 @@ foreign key(id_pedido) references pedido(id_pedido),
 foreign key(id_produto) references produto(id_produto)
 );
 
-delete from itemPedido;
-select * from tipoUsuario
+INSERT INTO categoria (id_categoria, nome)
+VALUES (1, 'Eletrônicos');
+
+INSERT INTO categoria (id_categoria, nome)
+VALUES (2, 'Roupas');
+
+INSERT INTO produto (id_produto, nome, descricao, preco_venda, preco_compra, quantidade, id_categoria)
+VALUES (1, 'Produto A', 'Descrição do Produto A', 29.99, 15.00, 100, 1);
+
+INSERT INTO produto (id_produto, nome, descricao, preco_venda, preco_compra, quantidade, id_categoria)
+VALUES (2, 'Produto B', 'Descrição do Produto B', 49.99, 25.00, 50, 2);
+
+INSERT INTO cliente (id_cliente, nome, email, endereco, telefone, obervacao_cliente)
+VALUES
+(1, 'João Silva', 'joao.silva@email.com', 'Rua A, 123', '(11) 1234-5678', 'Cliente VIP'),
+(2, 'Maria Oliveira', 'maria.oliveira@email.com', 'Avenida B, 456', '(22) 9876-5432', 'Cliente desde 2020'),
+(3, 'Carlos Santos', 'carlos.santos@email.com', 'Travessa C, 789', '(33) 5555-5555', 'Favor entrar em contato à tarde'),
+(4, 'Ana Pereira', 'ana.pereira@email.com', 'Praça D, 987', '(44) 2222-3333', 'Endereço de entrega diferente'),
+(5, 'Fernando Lima', 'fernando.lima@email.com', 'Alameda E, 654', '(55) 1234-5678', 'Cliente corporativo'),
+(6, 'Lúcia Souza', 'lucia.souza@email.com', 'Avenida F, 321', '(66) 8765-4321', 'Pagamento em cheque'),
+(7, 'Ricardo Pereira', 'ricardo.pereira@email.com', 'Rua G, 789', '(77) 4444-5555', 'Sem informações adicionais'),
+(8, 'Camila Santos', 'camila.santos@email.com', 'Travessa H, 654', '(88) 1111-2222', 'Cliente em débito'),
+(9, 'Gustavo Oliveira', 'gustavo.oliveira@email.com', 'Praça I, 987', '(99) 3333-4444', 'Preferência por contato por e-mail'),
+(10, 'Isabel Lima', 'isabel.lima@email.com', 'Alameda J, 321', '(00) 9999-8888', 'Cliente em potencial');
+
+
+select * from produto;
+
 
 
