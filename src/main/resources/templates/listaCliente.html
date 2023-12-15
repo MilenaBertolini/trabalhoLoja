@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/tabelas.css}">
     <title>Lista Cliente</title>
 </head>
+
 <body>
     <table>
-
+        <header>
+            <a href="/home">Menu</a>
+        </header>
+        <a href="/cliente/add">Inserir</a>
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Endereço</th>
                 <th>Telefone</th>
-                <th>Observeação</th>
+                <th>Observação</th>
+                <th class="colAcoes">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -25,12 +32,12 @@
                 <td th:text="${clientes.endereco}"></td>
                 <td th:text="${clientes.telefone}"></td>
                 <td th:text="${clientes.obervacao_cliente}"></td>
-                <td><a th:href="@{'/cliente/getById?id=' + ${clientes.id_cliente}}">Editar</a></td>
-                <td><a th:href="@{'/cliente/delete?id=' + ${clientes.id_cliente}}">Excluir</a></td>
+                <td><div class="acoes"><a class="edit" th:href="@{'/cliente/getById?id=' + ${clientes.id_cliente}}"></a><a class="delete" th:href="@{'/cliente/delete?id=' + ${clientes.id_cliente}}"></a></div></td>
+                
             </tr>
         </tbody>
-        <a href="/cliente/add">Inserir</a>
-        <a href="/home">Menu</a>
+
     </table>
 </body>
+
 </html>
