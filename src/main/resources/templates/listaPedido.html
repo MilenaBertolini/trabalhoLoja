@@ -10,34 +10,43 @@
 </head>
 
 <body>
-    <header>
-        <a href="/home">Menu</a>
-    </header>
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Código do pedido</th>
-                    <th>Cliente</th>
-                    <th>Data</th>
-                    <th>Valor Total</th>
-                    <th>Observacao</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="pedido: ${pedido}">
-                    <td th:text="${pedido.id_pedido}"></td>
-                    <td th:text="${pedido.Cliente.nome}"></td>
-                    <td th:text="${pedido.data_pedido}"></td>
-                    <td th:text="${pedido.valor_pedido}"></td>
-                    <td th:text="${pedido.observacao_pedido}"></td>
-                    <td><a th:href="@{'/pedido/getById?id=' + ${pedido.id_pedido}}">Visualizar</a></td>
-                </tr>
-            </tbody>
-            
-        </table>
-    </main>
+    <div class="fundo">
+        <header>
+            <nav>
+                <ul><a href="/home">Home</a></ul>
+                <ul><a href="/cliente/getAll">Clientes</a></ul>
+                <ul><a href="/produto/getAll">Produtos</a></ul>
+                <ul><a href="/pedido/getAll">Consultar Pedidos</a></ul>
+                <ul><a href="/categoria/getAll">Categorias</a></ul>
+                <ul><a href="/pedido/add">Gerar pedido</a></ul>
+            </nav>
+        </header>
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código do pedido</th>
+                        <th>Cliente</th>
+                        <th>Data</th>
+                        <th>Valor Total</th>
+                        <th>Observacao</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="pedido: ${pedido}">
+                        <td th:text="${pedido.id_pedido}"></td>
+                        <td th:text="${pedido.Cliente.nome}"></td>
+                        <td th:text="${pedido.data_pedido}"></td>
+                        <td th:text="${pedido.valor_pedido}"></td>
+                        <td th:text="${pedido.observacao_pedido}"></td>
+                        <td><a th:href="@{'/pedido/getById?id=' + ${pedido.id_pedido}}">Visualizar</a></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </main>
+    </div>
     <footer>
         <div>
          <h1>Contatos</h1>

@@ -10,33 +10,69 @@
 </head>
 
 <body>
-    <header>
-        <a href="/home">Menu</a>
-    </header>
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th class="colAcoes">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="categoria: ${categoria}">
-                    <td th:text="${categoria.nome}"></td>
-                    <td>
-                        <div class="acoes">
-                            <a class="edit" th:href="@{'/categoria/getById?id=' + ${categoria.id_categoria}}"></a><a
-                                class="delete" th:href="@{'/categoria/delete?id=' + ${categoria.id_categoria}}"></a>
-                        </div>
-                    </td>
+    
+    <div class="fundo">
+        <header>
+            <nav>
+                <ul><a href="/home">Home</a></ul>
+                <ul><a href="/cliente/getAll">Clientes</a></ul>
+                <ul><a href="/produto/getAll">Produtos</a></ul>
+                <ul><a href="/pedido/getAll">Consultar Pedidos</a></ul>
+                <ul><a href="/categoria/getAll">Categorias</a></ul>
+                <ul><a href="/pedido/add">Gerar pedido</a></ul>
+            </nav>
+        </header>
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th class="colAcoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="categoria: ${categoria}">
+                        <td th:text="${categoria.nome}"></td>
+                        <td>
+                            <div class="acoes">
+                                <a class="edit" th:href="@{'/categoria/getById?id=' + ${categoria.id_categoria}}"></a><a
+                                    class="delete" th:href="@{'/categoria/delete?id=' + ${categoria.id_categoria}}"></a>
+                            </div>
+                        </td>
+    
+                    </tr>
+                </tbody>
+                
+            </table>
+            <a href="/categoria/add"><span class="inserir"></span></a>
+        </main>
+    </div>
 
-                </tr>
-            </tbody>
+    <footer>
+        <div>
+         <h1>Contatos</h1>
+         <p>34 9 91234 5678</p>
+         <p>admin@dominio.com</p>
+        </div>
+        <div>
+            <img id="logo" th:src="@{/img/1.png}" width="100px" alt="">
+            <p id="direitos">Nenhum direito reservado</p>
+        </div>
+        <div>
+            <form action="">
+                <label for="InscrevaSe">Inscreva -se:</label>
+                <br>
+                <input type="text" name="InscrevaSe" placeholder="Seu E-mail">
+                <input id="enviar" type="button" value="✔️">
+            </form>
+            <p>Siga-nos:</p>
+            <img id="instagram" th:src="@{/img/instagram.png}" alt="">
+            <img id="facebook" th:src="@{/img/facebook.png}" alt="">
+            <img id="twitter" th:src="@{/img/twitter.png}" alt="">
+            <img id="youtube" th:src="@{/img/youtube.png}" alt="">
             
-        </table>
-        <a href="/categoria/add"><span class="inserir"></span></a>
-    </main>
+        </div>
+    </footer>
 </body>
 
 </html>

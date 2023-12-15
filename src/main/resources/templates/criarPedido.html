@@ -14,64 +14,98 @@
 </head>
 
 <body>
-    <header>
-        <a id="home" href="/home">Menu</a>
-    </header>
-
-    <main>
-
-
-        <div class="criarPedido">
-            <div class="pedidoInfo">
-                <h2>Selecione o cliente:</h2>
-                <select id="id_cliente" name="id_cliente">
-                    <option th:each="i : ${cliente}" th:value="${i.id_cliente}" th:text="${i.nome}">
-                    </option>
-                </select>
-                <span class="caixaBtn">
-                    <a href="/cliente/add"><button class="btnPedidoAdd">Adicionar cliente</button></a>
-                    <button class="btnPedidoAdd" onclick="FinalizaPedido()">Fechar pedido</button>
-                </span>
-                <div id="valorTotal"></div>
-
+    <div class="fundo">
+        <header>
+            <nav>
+                <ul><a href="/home">Home</a></ul>
+                <ul><a href="/cliente/getAll">Clientes</a></ul>
+                <ul><a href="/produto/getAll">Produtos</a></ul>
+                <ul><a href="/pedido/getAll">Consultar Pedidos</a></ul>
+                <ul><a href="/categoria/getAll">Categorias</a></ul>
+                <ul><a href="/pedido/add">Gerar pedido</a></ul>
+            </nav>
+        </header>
+    
+        <main>
+    
+    
+            <div class="criarPedido">
+                <div class="pedidoInfo">
+                    <h2>Selecione o cliente:</h2>
+                    <select id="id_cliente" name="id_cliente">
+                        <option th:each="i : ${cliente}" th:value="${i.id_cliente}" th:text="${i.nome}">
+                        </option>
+                    </select>
+                    <span class="caixaBtn">
+                        <a href="/cliente/add"><button class="btnPedidoAdd">Adicionar cliente</button></a>
+                        <button class="btnPedidoAdd" onclick="FinalizaPedido()">Fechar pedido</button>
+                    </span>
+                    <div id="valorTotal"></div>
+    
+                </div>
+                <div class="tabelaPedido">
+                    <table>
+    
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Preço de Venda</th>
+                                <th>Estoque</th>
+                                <th>Categoria</th>
+                                <th>Quantidade</th>
+                                <th class="colAcoes">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="produto: ${produto}">
+                                <td th:text="${produto.nome}"></td>
+                                <td th:text="${produto.descricao}"></td>
+                                <td th:text="${produto.preco_venda}"></td>
+                                <td th:text="${produto.quantidade}"></td>
+                                <td th:text="${produto.Categoria.nome}"></td>
+                                <td><input type="number" th:id="'txt_' + ${produto.id_produto}" /></td>
+                                <td class="caixaBtn">
+                                    <button class="btnPedidoAdd" th:id="'addButton' + ${produto.id_produto}"
+                                        th:onclick="'addItem(' + ${produto.id_produto} + ')'">Add</button>
+                                    <button class="btnPedidoAdd" disabled th:id="'delButton' + ${produto.id_produto}"
+                                        th:onclick="'deleteItem(' + ${produto.id_produto} + ')'">Remove</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="tabelaPedido">
-                <table>
+    
+    
+        </main>
+    </div>
 
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Descrição</th>
-                            <th>Preço de Venda</th>
-                            <th>Estoque</th>
-                            <th>Categoria</th>
-                            <th>Quantidade</th>
-                            <th class="colAcoes">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="produto: ${produto}">
-                            <td th:text="${produto.nome}"></td>
-                            <td th:text="${produto.descricao}"></td>
-                            <td th:text="${produto.preco_venda}"></td>
-                            <td th:text="${produto.quantidade}"></td>
-                            <td th:text="${produto.Categoria.nome}"></td>
-                            <td><input type="number" th:id="'txt_' + ${produto.id_produto}" /></td>
-                            <td class="caixaBtn">
-                                <button class="btnPedidoAdd" th:id="'addButton' + ${produto.id_produto}"
-                                    th:onclick="'addItem(' + ${produto.id_produto} + ')'">Add</button>
-                                <button class="btnPedidoAdd" disabled th:id="'delButton' + ${produto.id_produto}"
-                                    th:onclick="'deleteItem(' + ${produto.id_produto} + ')'">Remove</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <footer>
+        <div>
+         <h1>Contatos</h1>
+         <p>34 9 91234 5678</p>
+         <p>admin@dominio.com</p>
         </div>
-
-
-    </main>
-
+        <div>
+            <img id="logo" th:src="@{/img/1.png}" width="100px" alt="">
+            <p id="direitos">Nenhum direito reservado</p>
+        </div>
+        <div>
+            <form action="">
+                <label for="InscrevaSe">Inscreva -se:</label>
+                <br>
+                <input type="text" name="InscrevaSe" placeholder="Seu E-mail">
+                <input id="enviar" type="button" value="✔️">
+            </form>
+            <p>Siga-nos:</p>
+            <img id="instagram" th:src="@{/img/instagram.png}" alt="">
+            <img id="facebook" th:src="@{/img/facebook.png}" alt="">
+            <img id="twitter" th:src="@{/img/twitter.png}" alt="">
+            <img id="youtube" th:src="@{/img/youtube.png}" alt="">
+            
+        </div>
+    </footer>
 
 </body>
 

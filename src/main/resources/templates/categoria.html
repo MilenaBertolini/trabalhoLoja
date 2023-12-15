@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Categoria</title>
 </head>
+
 <body>
 
     <main>
         <h2 class="title">Formulário de Registro</h2>
         <div th:if="${editando} == true">
             <form method="POST" action="/categoria/update">
-        
-                <input type="hidden"  name="id_categoria" th:value="${categoria.id_categoria}">
+
+                <input type="hidden" name="id_categoria" th:value="${categoria.id_categoria}">
                 <label class="label">Nome</label>
                 <input type="text" name="nome" th:value="${categoria.nome}">
-        
+
                 <button type="submit">Atualizar</button>
             </form>
         </div>
         <div th:if="${editando} == false">
             <form method="POST" action="/categoria/insert">
-        
+
                 <label class="label">Nome</label>
                 <input type="text" name="nome">
-        
+
                 <button type="submit">Inserir</button>
             </form>
         </div>
     </main>
     <footer>
         <div>
-         <h1>Contatos</h1>
-         <p>34 9 91234 5678</p>
-         <p>admin@dominio.com</p>
+            <h1>Contatos</h1>
+            <p>34 9 91234 5678</p>
+            <p>admin@dominio.com</p>
         </div>
         <div>
             <img id="logo" th:src="@{/img/1.png}" width="100px" alt="">
@@ -52,8 +54,9 @@
             <img id="facebook" th:src="@{/img/facebook.png}" alt="">
             <img id="twitter" th:src="@{/img/twitter.png}" alt="">
             <img id="youtube" th:src="@{/img/youtube.png}" alt="">
-            
+
         </div>
     </footer>
 </body>
+
 </html>

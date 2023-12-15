@@ -8,37 +8,46 @@
     <title>Lista Usuario</title>
 </head>
 <body class="rolesPag">
-    <header>
-        <a href="/home">Menu</a>
-    </header>
-    <main>
-        <table>
-
-            <thead>
-                <tr>
-                    <th>
-                        Nome
-                    </th>
-                    <th>Email</th>
-                    <th>Senha</th>
-                    <th>Tipo</th>
-                    <th class="colAcoes">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="usuarios: ${usuario}">
-                    <td th:text="${usuarios.nome}"></td>
-                    <td th:text="${usuarios.email}"></td>
-                    <td th:text="${usuarios.senha}"></td>
-                    <td th:text="${usuarios.tipoUsuario.nome}"></td>
-                    <td><div class="acoes"><a class="edit" th:href="@{'/usuario/getById?id=' + ${usuarios.id_usuario}}"></a><a class="delete" th:href="@{'/usuario/delete?id=' + ${usuarios.id_usuario}}"></a></div></td>
-                    
+    <div class="fundo">
+        <header>
+            <nav>
+                <ul><a href="/home">Home</a></ul>
+                <ul><a href="/cliente/getAll">Clientes</a></ul>
+                <ul><a href="/produto/getAll">Produtos</a></ul>
+                <ul><a href="/pedido/getAll">Consultar Pedidos</a></ul>
+                <ul><a href="/categoria/getAll">Categorias</a></ul>
+                <ul><a href="/pedido/add">Gerar pedido</a></ul>
+            </nav>
+        </header>
+        <main>
+            <table>
     
-                </tr>
-            </tbody>
-            <a href="/usuario/add"><span class="inserir"></span></a>
-           
-        </table>
-    </main>
+                <thead>
+                    <tr>
+                        <th>
+                            Nome
+                        </th>
+                        <th>Email</th>
+                        <th>Senha</th>
+                        <th>Tipo</th>
+                        <th class="colAcoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuarios: ${usuario}">
+                        <td th:text="${usuarios.nome}"></td>
+                        <td th:text="${usuarios.email}"></td>
+                        <td th:text="${usuarios.senha}"></td>
+                        <td th:text="${usuarios.tipoUsuario.nome}"></td>
+                        <td><div class="acoes"><a class="edit" th:href="@{'/usuario/getById?id=' + ${usuarios.id_usuario}}"></a><a class="delete" th:href="@{'/usuario/delete?id=' + ${usuarios.id_usuario}}"></a></div></td>
+                        
+        
+                    </tr>
+                </tbody>
+                <a href="/usuario/add"><span class="inserir"></span></a>
+               
+            </table>
+        </main>
+    </div>
 </body>
 </html>

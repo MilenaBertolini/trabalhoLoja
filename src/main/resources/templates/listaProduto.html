@@ -6,40 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/listaProduto.css}">
+    
     <title>Lista Produto</title>
 </head>
 
 <body class="listaProdutos">
-    <header>
-        <a href="/cliente/getAll">Lista de Clientes</a>
-        <a href="/produto/getAll">Lista de Produtos</a>
-        <a href="/pedido/getAll">Lista de Pedidos</a>
-        <a href="/home">Menu</a>
-    </header>
-
-    <main>
-        <section class="produtos" th:each="produto : ${produto}">
-            <div>
-                <div class="caixaImagem"><img class="imgproduto"
-                        src="https://m.media-amazon.com/images/I/81DHdkzgECL._AC_SL1500_.jpg" alt="Imagem do produto">
+    <div class="fundo">
+        <header>
+            <nav>
+                <ul><a href="/home">Home</a></ul>
+                <ul><a href="/cliente/getAll">Clientes</a></ul>
+                <ul><a href="/produto/getAll">Produtos</a></ul>
+                <ul><a href="/pedido/getAll">Consultar Pedidos</a></ul>
+                <ul><a href="/categoria/getAll">Categorias</a></ul>
+                <ul><a href="/pedido/add">Gerar pedido</a></ul>
+            </nav>
+        </header>
+    
+        <main>
+            <section class="produtos" th:each="produto : ${produto}">
+                <div>
+                    <div class="caixaImagem"><img class="imgproduto"
+                            src="https://m.media-amazon.com/images/I/81DHdkzgECL._AC_SL1500_.jpg" alt="Imagem do produto">
+                    </div>
+                    <div class="caixaTexto">
+                        <h2 th:text="${produto.nome}"></h2>
+                        <p th:text="${produto.descricao}"></p>
+                        <p>Preço de venda: R$<span th:text="${produto.preco_venda}"></span></p>
+                        <p>Preço de compra: R$<span th:text="${produto.preco_compra}"></span></p>
+                        <p>Estoque: <span th:text="${produto.quantidade}"></span></p>
+                        <p>Categoria: <span th:text="${produto.categoria.nome}"></span></p>
+                        <span class="acoes">
+                            <a class="edit" th:href="@{'/produto/getById?id=' + ${produto.id_produto}}"></a>
+                            <a class="delete" th:href="@{'/produto/delete?id=' + ${produto.id_produto}}"></a>
+                        </span>
+                    </div>
                 </div>
-                <div class="caixaTexto">
-                    <h2 th:text="${produto.nome}"></h2>
-                    <p th:text="${produto.descricao}"></p>
-                    <p>Preço de venda: R$<span th:text="${produto.preco_venda}"></span></p>
-                    <p>Preço de compra: R$<span th:text="${produto.preco_compra}"></span></p>
-                    <p>Estoque: <span th:text="${produto.quantidade}"></span></p>
-                    <p>Categoria: <span th:text="${produto.categoria.nome}"></span></p>
-                    <span class="acoes">
-                        <a class="edit" th:href="@{'/produto/getById?id=' + ${produto.id_produto}}"></a>
-                        <a class="delete" th:href="@{'/produto/delete?id=' + ${produto.id_produto}}"></a>
-                    </span>
-                </div>
-            </div>
-        </section>
-
-        <a href="/produto/add"><span class="inserir"></span></a>
-    </main>
+            </section>
+    
+            <a href="/produto/add"><span class="inserir"></span></a>
+        </main>
+    </div>
     <footer>
         <div>
          <h1>Contatos</h1>
